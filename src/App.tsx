@@ -1,9 +1,6 @@
 import React from 'react';
+import Dashboard from './pages/Dashboard';
 
-function App() {
-  return (
-    <h1>Pomodoro</h1>
-  );
-}
+const App: React.FC = () => <Dashboard />;
 
 export default App;
