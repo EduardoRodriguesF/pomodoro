@@ -23,4 +23,5 @@ const DEFAULT_VALUE = {
 const PomodoroContext = createContext<IPomodoroContextProps>(DEFAULT_VALUE);
 const usePomodoro = () => useContext(PomodoroContext);
 
+export { PomodoroContext };
 export default usePomodoro;

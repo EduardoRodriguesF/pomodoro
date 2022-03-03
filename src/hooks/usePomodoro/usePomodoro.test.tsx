@@ -1,12 +1,21 @@
+import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { usePomodoro } from '.';
+import { usePomodoro, PomodoroContextProvider } from '.';
 import { IPomodoroContextProps } from './usePomodoro.types';
+
+interface IWrapperProps {
+  children: React.ReactNode;
+}
 
 describe('usePomodoro', () => {
   let pomodoro: IPomodoroContextProps;
   beforeEach(() => {
     jest.useFakeTimers();
-    const { result } = renderHook(() => usePomodoro());
+
+    const wrapper = ({ children }: IWrapperProps) => (
+      <PomodoroContextProvider>{children}</PomodoroContextProvider>
+    );
+    const { result } = renderHook(() => usePomodoro(), { wrapper });
     pomodoro = result.current;
   });
   afterEach(() => {
