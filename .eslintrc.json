@@ -21,6 +21,9 @@
     "@typescript-eslint",
     "react-hooks"
   ],
+  "globals": {
+    "NodeJS": true
+  },
   "rules": {
     "no-use-before-define": "off",
     "react-hooks/rules-of-hooks": "error",

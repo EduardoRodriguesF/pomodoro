@@ -5,8 +5,10 @@ import countdownTime from 'utils/countdownTime';
 import { PomodoroContext } from '.';
 import { IPomodoroMode } from './usePomodoro.types';
 
+let countdownTimeout: NodeJS.Timeout;
+
 const PomodoroContextProvider: React.FC = ({ children }) => {
-  const [isRunning, setIsRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(true);
   const [count, setCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
 
   const startTimer = useCallback(() => {
@@ -17,18 +19,16 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     setIsRunning(false);
   }, []);
 
-  const countdown = useCallback(() => {
-    if (!isRunning) return;
-
-    setCount(countdownTime(count));
-    setTimeout(countdown, 1000);
-  }, [count, isRunning]);
-
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning) {
+      clearTimeout(countdownTimeout);
+      return;
+    }
 
-    setTimeout(countdown, 1000);
-  }, [isRunning, countdown]);
+    countdownTimeout = setTimeout(() => {
+      setCount(countdownTime(count));
+    }, 1000);
+  }, [isRunning, count]);
 
   const pomodoro = useMemo(() => ({
     isRunning,
