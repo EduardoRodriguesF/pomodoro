@@ -2,14 +2,15 @@ import React, {
   useState, useMemo, useCallback, useEffect,
 } from 'react';
 import countdownTime from 'utils/countdownTime';
-import { PomodoroContext } from '.';
-import { IPomodoroMode } from './usePomodoro.types';
+import { PomodoroContext, PomodoroMode } from '.';
 
 let countdownTimeout: NodeJS.Timeout;
 
 const PomodoroContextProvider: React.FC = ({ children }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [count, setCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
+  const [cycles, setCycles] = useState(0);
+  const [mode, setMode] = useState(PomodoroMode.work);
 
   const startTimer = useCallback(() => {
     setIsRunning(true);
@@ -19,25 +20,51 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     setIsRunning(false);
   }, []);
 
+  const changeToNextMode = useCallback(() => {
+    const newCycle = cycles + 1;
+    let newMode = PomodoroMode.work;
+    const newCount = { hours: 0, minutes: 25, seconds: 0 };
+
+    if (mode === PomodoroMode.work) {
+      newMode = PomodoroMode.break;
+      newCount.minutes = 5;
+      if (newCycle % 7 === 0) {
+        newMode = PomodoroMode.longBreak;
+        newCount.minutes = 15;
+      }
+    }
+
+    setIsRunning(false);
+    setMode(newMode);
+    setCycles(newCycle);
+    setCount(newCount);
+    clearTimeout(countdownTimeout);
+  }, [cycles, mode]);
+
   useEffect(() => {
     if (!isRunning) {
       clearTimeout(countdownTimeout);
       return;
     }
 
+    if (count.hours + count.minutes + count.seconds === 0) {
+      changeToNextMode();
+      return;
+    }
+
     countdownTimeout = setTimeout(() => {
       setCount(countdownTime(count));
     }, 1000);
-  }, [isRunning, count]);
+  }, [isRunning, count, changeToNextMode]);
 
   const pomodoro = useMemo(() => ({
     isRunning,
     startTimer,
     pauseTimer,
-    cycles: 0,
-    mode: 'work' as IPomodoroMode,
+    cycles,
+    mode,
     count,
-  }), [isRunning, startTimer, pauseTimer, count]);
+  }), [isRunning, startTimer, pauseTimer, count, cycles, mode]);
 
   return (
     <PomodoroContext.Provider value={pomodoro}>
