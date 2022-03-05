@@ -8,7 +8,7 @@ import { IPomodoroMode } from './usePomodoro.types';
 let countdownTimeout: NodeJS.Timeout;
 
 const PomodoroContextProvider: React.FC = ({ children }) => {
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning, setIsRunning] = useState(false);
   const [count, setCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
 
   const startTimer = useCallback(() => {

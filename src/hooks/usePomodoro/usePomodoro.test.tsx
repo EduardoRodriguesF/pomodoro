@@ -9,6 +9,31 @@ interface IWrapperProps {
 
 describe('usePomodoro', () => {
   let pomodoro: RenderResult<IPomodoroContextProps>;
+
+  const passTimeBySeconds = (seconds: number) => {
+    for (let i = 0; i < seconds; i += 1) {
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+    }
+  };
+
+  const passTimeByMinutes = (minutes: number) => {
+    passTimeBySeconds(minutes * 60);
+  };
+
+  const passTimeUntilEnd = () => {
+    passTimeByMinutes(pomodoro.current.count.minutes);
+    passTimeBySeconds(pomodoro.current.count.seconds);
+  };
+
+  const passTimeByCycles = (cycles: number) => {
+    for (let i = 0; i < cycles; i += 1) {
+      act(pomodoro.current.startTimer);
+      passTimeUntilEnd();
+    }
+  };
+
   beforeEach(() => {
     jest.useFakeTimers();
 
@@ -36,45 +61,31 @@ describe('usePomodoro', () => {
     expect(pomodoro.current.isRunning).toBeFalsy();
   });
   it('should be able to count down', () => {
-    pomodoro.current.count = { hours: 0, minutes: 25, seconds: 2 };
-
     act(() => {
       pomodoro.current.startTimer();
-      jest.advanceTimersByTime(1000);
     });
 
-    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 24, seconds: 59 });
+    passTimeBySeconds(3);
 
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-
-    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 24, seconds: 58 });
+    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 24, seconds: 57 });
   });
   it('should be able to go to next mode', () => {
-    pomodoro.current.count = { hours: 0, minutes: 0, seconds: 1 };
-
     act(() => {
       pomodoro.current.startTimer();
-      jest.advanceTimersByTime(1000);
     });
 
-    expect(pomodoro.current.mode).toBe('break');
+    passTimeUntilEnd();
+
     expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 5, seconds: 0 });
     expect(pomodoro.current.isRunning).toBeFalsy();
+    expect(pomodoro.current.mode).toBe('break');
   });
   it('should be able to do a long break', () => {
-    pomodoro.current.count = { hours: 0, minutes: 0, seconds: 1 };
-    pomodoro.current.cycles = 3;
+    passTimeByCycles(4);
 
-    act(() => {
-      pomodoro.current.startTimer();
-      jest.advanceTimersByTime(1000);
-    });
-
-    expect(pomodoro.current.cycles).toBe(4);
-    expect(pomodoro.current.mode).toBe('longBreak');
     expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 15, seconds: 0 });
     expect(pomodoro.current.isRunning).toBeFalsy();
+    expect(pomodoro.current.cycles).toBe(4);
+    expect(pomodoro.current.mode).toBe('longBreak');
   });
 });
