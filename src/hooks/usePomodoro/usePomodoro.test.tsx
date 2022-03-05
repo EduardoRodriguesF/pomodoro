@@ -50,15 +50,25 @@ describe('usePomodoro', () => {
   it('should be able to start timer', () => {
     expect(pomodoro.current.isRunning).toBeFalsy();
     act(() => pomodoro.current.startTimer());
-    act(() => pomodoro.current.startTimer());
     expect(pomodoro.current.isRunning).toBeTruthy();
   });
   it('should be able to pause timer', () => {
-    act(() => {
-      pomodoro.current.startTimer();
-      pomodoro.current.pauseTimer();
-    });
+    act(pomodoro.current.startTimer);
+    expect(pomodoro.current.isRunning).toBeTruthy();
+    act(pomodoro.current.pauseTimer);
     expect(pomodoro.current.isRunning).toBeFalsy();
+  });
+  it('should not count down after pausing', () => {
+    act(pomodoro.current.startTimer);
+    expect(pomodoro.current.isRunning).toBeTruthy();
+    act(pomodoro.current.pauseTimer);
+    expect(pomodoro.current.isRunning).toBeFalsy();
+
+    const pausedCount = pomodoro.current.count;
+
+    passTimeBySeconds(3);
+
+    expect(pomodoro.current.count).toMatchObject(pausedCount);
   });
   it('should be able to count down', () => {
     act(() => {
@@ -81,11 +91,11 @@ describe('usePomodoro', () => {
     expect(pomodoro.current.mode).toBe('break');
   });
   it('should be able to do a long break', () => {
-    passTimeByCycles(4);
+    passTimeByCycles(7);
 
     expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 15, seconds: 0 });
     expect(pomodoro.current.isRunning).toBeFalsy();
-    expect(pomodoro.current.cycles).toBe(4);
+    expect(pomodoro.current.cycles).toBe(7);
     expect(pomodoro.current.mode).toBe('longBreak');
   });
 });
