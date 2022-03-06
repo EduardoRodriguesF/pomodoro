@@ -13,8 +13,6 @@ function countdownTime(time: ITime) {
     if (minutes < 0 && hours > 0) {
       minutes = 59;
       hours -= 1;
-
-      if (hours < 0) hours = 0;
     }
   }
 
