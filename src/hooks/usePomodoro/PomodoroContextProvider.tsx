@@ -64,6 +64,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     cycles,
     mode,
     count,
+    setCount,
   }), [isRunning, startTimer, pauseTimer, count, cycles, mode]);
 
   return (

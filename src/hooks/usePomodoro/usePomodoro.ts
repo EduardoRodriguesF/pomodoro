@@ -18,6 +18,7 @@ const DEFAULT_VALUE = {
     minutes: 25,
     seconds: 0,
   },
+  setCount: () => {},
 };
 
 const PomodoroContext = createContext<IPomodoroContextProps>(DEFAULT_VALUE);

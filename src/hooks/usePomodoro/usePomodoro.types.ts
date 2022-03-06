@@ -1,4 +1,12 @@
+import React from 'react';
+
 type IPomodoroMode = 'work' | 'break' | 'longBreak';
+
+interface ITime {
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
 
 interface IPomodoroContextProps {
   isRunning: boolean,
@@ -11,6 +19,7 @@ interface IPomodoroContextProps {
     minutes: number;
     seconds: number;
   };
+  setCount: React.Dispatch<React.SetStateAction<ITime>>
 }
 
 export type { IPomodoroContextProps, IPomodoroMode };
