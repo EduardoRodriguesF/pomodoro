@@ -2,13 +2,11 @@ import formatCount from '.';
 
 describe('formatCount', () => {
   it('should be able to format minutes and seconds into padded string', () => {
-    let count = {
+    const count = {
       hours: 0,
       minutes: 25,
       seconds: 0,
     };
-
-    count = formatCount(count);
 
     const expected = {
       hours: '0',
@@ -16,18 +14,16 @@ describe('formatCount', () => {
       seconds: '00',
     };
 
-    expect(count.minutes).toBe(expected.minutes);
-    expect(count.seconds).toBe(expected.seconds);
+    expect(formatCount(count).minutes).toBe(expected.minutes);
+    expect(formatCount(count).seconds).toBe(expected.seconds);
   });
   it('should not pad hours', () => {
-    let count = {
+    const count = {
       hours: 1,
       minutes: 0,
       seconds: 0,
     };
 
-    count = formatCount(count);
-
-    expect(count.hours).toBe('1');
+    expect(formatCount(count).hours).toBe('1');
   });
 });
