@@ -38,18 +38,10 @@ describe('PomodoroTimer component', () => {
     expect(element).toHaveTextContent(pomodoro.current.count.seconds.toString().padStart(2, '0'));
   });
   it('should not render hours when timer is less than 1 hour', () => {
-    const { getByTestId } = render(<PomodoroTimer />);
+    const { queryByTestId } = render(<PomodoroTimer />);
 
-    const element = getByTestId('hours');
+    const element = queryByTestId('hours');
 
     expect(element).toBeNull();
-  });
-  it('should render hours when timer is past 1 hour', () => {
-    const { getByTestId } = render(<PomodoroTimer />);
-    pomodoro.current.setCount({ hours: 1, minutes: 25, seconds: 0 });
-
-    const element = getByTestId('hours');
-
-    expect(element).toHaveTextContent(pomodoro.current.count.hours.toString());
   });
 });
