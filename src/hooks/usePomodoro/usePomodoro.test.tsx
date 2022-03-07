@@ -98,4 +98,12 @@ describe('usePomodoro', () => {
     expect(pomodoro.current.cycles).toBe(7);
     expect(pomodoro.current.mode).toBe('longBreak');
   });
+  it('should save initial count', () => {
+    const initial = pomodoro.current.count;
+
+    act(pomodoro.current.startTimer);
+    passTimeBySeconds(2);
+
+    expect(pomodoro.current.initialCount).toMatchObject(initial);
+  });
 });

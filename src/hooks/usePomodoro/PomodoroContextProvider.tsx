@@ -3,12 +3,14 @@ import React, {
 } from 'react';
 import countdownTime from 'utils/countdownTime';
 import { PomodoroContext, PomodoroMode } from '.';
+import { ITime } from './usePomodoro.types';
 
 let countdownTimeout: NodeJS.Timeout;
 
 const PomodoroContextProvider: React.FC = ({ children }) => {
   const [isRunning, setIsRunning] = useState(false);
-  const [count, setCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
+  const [initialCount, setInitialCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
+  const [count, setCount] = useState(initialCount);
   const [cycles, setCycles] = useState(0);
   const [mode, setMode] = useState(PomodoroMode.work);
 
@@ -18,6 +20,11 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
 
   const pauseTimer = useCallback(() => {
     setIsRunning(false);
+  }, []);
+
+  const newTimer = useCallback((newCount: ITime) => {
+    setCount(newCount);
+    setInitialCount(newCount);
   }, []);
 
   const changeToNextMode = useCallback(() => {
@@ -37,9 +44,9 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     setIsRunning(false);
     setMode(newMode);
     setCycles(newCycle);
-    setCount(newCount);
+    newTimer(newCount);
     clearTimeout(countdownTimeout);
-  }, [cycles, mode]);
+  }, [cycles, mode, newTimer]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -61,11 +68,12 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     isRunning,
     startTimer,
     pauseTimer,
+    newTimer,
     cycles,
     mode,
     count,
-    setCount,
-  }), [isRunning, startTimer, pauseTimer, count, cycles, mode]);
+    initialCount,
+  }), [isRunning, startTimer, pauseTimer, count, cycles, mode, newTimer, initialCount]);
 
   return (
     <PomodoroContext.Provider value={pomodoro}>
