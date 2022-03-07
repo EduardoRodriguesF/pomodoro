@@ -1,5 +1,5 @@
+import { ITime } from 'types/ITime';
 import countdownTime from './countdownTime';
-import { ITime } from './countdownTime.types';
 
 describe('countdownTime', () => {
   let time: ITime;

@@ -1,4 +1,4 @@
-import { ITime } from './countdownTime.types';
+import { ITime } from 'types/ITime';
 
 function countdownTime(time: ITime) {
   let { hours, minutes, seconds } = time;

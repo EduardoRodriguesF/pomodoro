@@ -1,10 +1,6 @@
-type IPomodoroMode = 'work' | 'break' | 'longBreak';
+import { ITime } from 'types/ITime';
 
-interface ITime {
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+type IPomodoroMode = 'work' | 'break' | 'longBreak';
 
 interface IPomodoroContextProps {
   isRunning: boolean,
