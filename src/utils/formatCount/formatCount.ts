@@ -1,4 +1,4 @@
-import { ITime } from 'utils/countdownTime/countdownTime.types';
+import { ITime } from 'types';
 
 function formatCount(count: ITime) {
   return {
