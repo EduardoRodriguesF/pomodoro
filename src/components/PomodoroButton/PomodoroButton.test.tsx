@@ -1,34 +1,40 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { PomodoroContextProvider } from 'hooks/usePomodoro';
 import PomodoroButton from '.';
 
 describe('PomodoroButton component', () => {
-  it('should be able to start timer', () => {
-    const { baseElement, queryByTestId } = render(<PomodoroButton />);
+  it('should render pause icon when timer is started', () => {
+    const { getByRole, queryByTestId } = render(
+      <PomodoroContextProvider>
+        <PomodoroButton />
+      </PomodoroContextProvider>,
+    );
+
+    const button = getByRole('button');
 
     expect(queryByTestId('play-icon')).not.toBeNull();
 
-    act(() => {
-      fireEvent.click(baseElement);
-    });
+    fireEvent.click(button);
 
     expect(queryByTestId('pause-icon')).not.toBeNull();
   });
-  it('should be able to pause timer', () => {
-    const { baseElement, queryByTestId } = render(<PomodoroButton />);
+  it('should render play icon when timer is paused', () => {
+    const { getByRole, queryByTestId } = render(
+      <PomodoroContextProvider>
+        <PomodoroButton />
+      </PomodoroContextProvider>,
+    );
+
+    const button = getByRole('button');
 
     expect(queryByTestId('play-icon')).not.toBeNull();
 
-    act(() => {
-      fireEvent.click(baseElement);
-    });
+    fireEvent.click(button);
 
     expect(queryByTestId('pause-icon')).not.toBeNull();
 
-    act(() => {
-      fireEvent.click(baseElement);
-    });
+    fireEvent.click(button);
 
     expect(queryByTestId('play-icon')).not.toBeNull();
   });
