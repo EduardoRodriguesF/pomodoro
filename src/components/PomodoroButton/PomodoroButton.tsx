@@ -14,7 +14,9 @@ const PomodoroButton: React.FC = () => {
 
   return (
     <Button type="button" onClick={handleClick}>
-      {isRunning ? <FiPause data-testid="pause-icon" /> : <FiPlay data-testid="play-icon" />}
+      {isRunning
+        ? <FiPause size={32} data-testid="pause-icon" />
+        : <FiPlay size={32} data-testid="play-icon" />}
     </Button>
   );
 };
