@@ -31,6 +31,6 @@ describe('countProgress', () => {
 
     const progress = countProgress(initialCount, currentCount);
 
-    expect(progress).toBe(43.86);
+    expect(progress).toBe(43.87);
   });
 });
