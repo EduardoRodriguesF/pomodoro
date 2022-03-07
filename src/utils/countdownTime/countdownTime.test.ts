@@ -1,4 +1,4 @@
-import { ITime } from 'types/ITime';
+import { ITime } from 'types';
 import countdownTime from './countdownTime';
 
 describe('countdownTime', () => {

@@ -4,4 +4,4 @@ interface ITime {
   seconds: number;
 }
 
-export type { ITime };
+export default ITime;

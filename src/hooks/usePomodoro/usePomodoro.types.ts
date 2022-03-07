@@ -1,4 +1,4 @@
-import { ITime } from 'types/ITime';
+import { ITime } from 'types';
 
 type IPomodoroMode = 'work' | 'break' | 'longBreak';
 
