@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { usePomodoro } from 'hooks/usePomodoro';
 import formatCount from 'utils/formatCount';
+import { Timestamp, Wrapper } from './PomodoroTimer.style';
 
 const formattedCountDefault = {
   hours: '0',
@@ -17,17 +18,17 @@ const PomodoroTimer: React.FC = () => {
   }, [count]);
 
   return (
-    <div>
+    <Wrapper>
       {count?.hours > 0 && (
         <>
-          <span data-testid="hours">{formattedCount.hours}</span>
+          <Timestamp data-testid="hours">{formattedCount.hours}</Timestamp>
           <span>:</span>
         </>
       )}
-      <span data-testid="minutes">{formattedCount.minutes}</span>
+      <Timestamp data-testid="minutes">{formattedCount.minutes}</Timestamp>
       <span>:</span>
-      <span data-testid="seconds">{formattedCount.seconds}</span>
-    </div>
+      <Timestamp data-testid="seconds">{formattedCount.seconds}</Timestamp>
+    </Wrapper>
   );
 };
 
