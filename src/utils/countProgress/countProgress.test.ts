@@ -12,7 +12,7 @@ describe('countProgress', () => {
 
     const progress = countProgress(initialCount, currentCount);
 
-    expect(progress).toBe(56);
+    expect(progress).toBe(44);
   });
   it('should return 0% at start', () => {
     const progress = countProgress(initialCount, initialCount);
@@ -31,6 +31,6 @@ describe('countProgress', () => {
 
     const progress = countProgress(initialCount, currentCount);
 
-    expect(progress).toBe(56.13);
+    expect(progress).toBe(43.86);
   });
 });
