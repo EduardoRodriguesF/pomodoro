@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { usePomodoro } from 'hooks/usePomodoro';
 import formatCount from 'utils/formatCount';
+import PomodoroRing from 'components/PomodoroRing';
 import { Timestamp, Wrapper } from './PomodoroTimer.style';
 
 const formattedCountDefault = {
@@ -28,6 +29,7 @@ const PomodoroTimer: React.FC = () => {
       <Timestamp data-testid="minutes">{formattedCount.minutes}</Timestamp>
       <span>:</span>
       <Timestamp data-testid="seconds">{formattedCount.seconds}</Timestamp>
+      <PomodoroRing />
     </Wrapper>
   );
 };
