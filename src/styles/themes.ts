@@ -1,4 +1,10 @@
-const themes = {
+import { ITheme } from 'types';
+
+interface IThemesObject {
+  [key: string]: ITheme;
+}
+
+const themes: IThemesObject = {
   white: {
     primary: '#DF3A36',
     text: '#1b2530',
