@@ -19,7 +19,9 @@
       "!src/App.tsx",
       "!src/**/index.ts",
       "!src/**/*.types.ts",
-      "!src/*.d.ts"
+      "!src/*.d.ts",
+      "!src/styles/**",
+      "!src/types/**"
     ]
   },
   "scripts": {
