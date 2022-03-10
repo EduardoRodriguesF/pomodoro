@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  user-select: none;
 `;
 
 export const Timestamp = styled.span`
