@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useContext } from 'react';
-import { IPomodoroContextProps, IPomodoroMode } from './usePomodoro.types';
+import { IPomodoroContextProps } from './usePomodoro.types';
 
 const POMODORO_MODE = {
   WORK: 'work',
@@ -10,10 +9,7 @@ const POMODORO_MODE = {
 
 const DEFAULT_VALUE = {
   isRunning: false,
-  startTimer: () => {},
-  pauseTimer: () => {},
-  newTimer: () => {},
-  mode: POMODORO_MODE.WORK as IPomodoroMode,
+  mode: POMODORO_MODE.WORK,
   cycles: 0,
   count: {
     hours: 0,
@@ -27,7 +23,9 @@ const DEFAULT_VALUE = {
   },
 };
 
-const PomodoroContext = createContext<IPomodoroContextProps>(DEFAULT_VALUE);
+const PomodoroContext = createContext<IPomodoroContextProps>(
+  DEFAULT_VALUE as IPomodoroContextProps,
+);
 const usePomodoro = () => useContext(PomodoroContext);
 
 export { PomodoroContext };

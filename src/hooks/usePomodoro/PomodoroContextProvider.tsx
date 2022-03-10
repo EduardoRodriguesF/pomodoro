@@ -1,9 +1,9 @@
 import React, {
   useState, useMemo, useCallback, useEffect,
 } from 'react';
+import { ITime } from 'types';
 import countdownTime from 'utils/countdownTime';
 import { PomodoroContext, PomodoroMode } from '.';
-import { ITime } from './usePomodoro.types';
 
 let countdownTimeout: NodeJS.Timeout;
 

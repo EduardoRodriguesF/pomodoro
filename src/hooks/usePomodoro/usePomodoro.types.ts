@@ -2,6 +2,10 @@ import { ITime } from 'types';
 
 type IPomodoroMode = 'work' | 'break' | 'longBreak';
 
+interface IPomodoroModesObject {
+  [key: string]: IPomodoroMode;
+}
+
 interface IPomodoroContextProps {
   isRunning: boolean,
   startTimer: () => void,
@@ -13,4 +17,4 @@ interface IPomodoroContextProps {
   initialCount: ITime;
 }
 
-export type { IPomodoroContextProps, IPomodoroMode, ITime };
+export type { IPomodoroContextProps, IPomodoroMode, IPomodoroModesObject };
