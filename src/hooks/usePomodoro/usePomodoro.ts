@@ -11,6 +11,7 @@ const DEFAULT_VALUE = {
   isRunning: false,
   mode: POMODORO_MODE.WORK,
   cycles: 0,
+  cyclesToLongBreak: 5,
   count: {
     hours: 0,
     minutes: 25,

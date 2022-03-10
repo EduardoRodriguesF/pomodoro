@@ -11,6 +11,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [initialCount, setInitialCount] = useState({ hours: 0, minutes: 25, seconds: 0 });
   const [count, setCount] = useState(initialCount);
+  const [cyclesToLongBreak, setCyclesToLongBreak] = useState(5);
   const [cycles, setCycles] = useState(0);
   const [mode, setMode] = useState(PomodoroMode.work);
 
@@ -35,7 +36,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     if (mode === PomodoroMode.work) {
       newMode = PomodoroMode.break;
       newCount.minutes = 5;
-      if (newCycle % 7 === 0) {
+      if (newCycle % cyclesToLongBreak === 0) {
         newMode = PomodoroMode.longBreak;
         newCount.minutes = 15;
       }
@@ -46,7 +47,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     setCycles(newCycle);
     newTimer(newCount);
     clearTimeout(countdownTimeout);
-  }, [cycles, mode, newTimer]);
+  }, [cycles, cyclesToLongBreak, mode, newTimer]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -70,10 +71,21 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     pauseTimer,
     newTimer,
     cycles,
+    cyclesToLongBreak,
     mode,
     count,
     initialCount,
-  }), [isRunning, startTimer, pauseTimer, count, cycles, mode, newTimer, initialCount]);
+  }), [
+    isRunning,
+    startTimer,
+    pauseTimer,
+    count,
+    cyclesToLongBreak,
+    cycles,
+    mode,
+    newTimer,
+    initialCount,
+  ]);
 
   return (
     <PomodoroContext.Provider value={pomodoro}>

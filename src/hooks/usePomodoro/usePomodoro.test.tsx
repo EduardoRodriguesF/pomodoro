@@ -91,11 +91,11 @@ describe('usePomodoro', () => {
     expect(pomodoro.current.mode).toBe('break');
   });
   it('should be able to do a long break', () => {
-    passTimeByCycles(7);
+    passTimeByCycles(pomodoro.current.cyclesToLongBreak);
 
     expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 15, seconds: 0 });
     expect(pomodoro.current.isRunning).toBeFalsy();
-    expect(pomodoro.current.cycles).toBe(7);
+    expect(pomodoro.current.cycles).toBe(pomodoro.current.cyclesToLongBreak);
     expect(pomodoro.current.mode).toBe('longBreak');
   });
   it('should save initial count', () => {
