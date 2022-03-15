@@ -18,7 +18,7 @@ interface ISettingsContextProps {
   setBreakTime: (time: ITime) => void;
   setLongBreakTime: (time: ITime) => void;
   setLongBreakInterval: (interval: number) => void;
-  toggleAutoCycle: () => void;
+  togglePauseAfterCycle: () => void;
 }
 
 export type { ITimerSet, IPreset, ISettingsContextProps };
