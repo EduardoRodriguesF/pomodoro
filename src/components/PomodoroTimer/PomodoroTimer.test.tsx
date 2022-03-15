@@ -28,14 +28,18 @@ describe('PomodoroTimer component', () => {
 
     const element = getByTestId('minutes');
 
-    expect(element).toHaveTextContent(pomodoro.current.count.minutes.toString().padStart(2, '0'));
+    expect(element).toHaveTextContent(
+      pomodoro.current.count.minutes.toString().padStart(2, '0'),
+    );
   });
   it('should be able to render seconds', () => {
     const { getByTestId } = render(<PomodoroTimer />);
 
     const element = getByTestId('seconds');
 
-    expect(element).toHaveTextContent(pomodoro.current.count.seconds.toString().padStart(2, '0'));
+    expect(element).toHaveTextContent(
+      pomodoro.current.count.seconds.toString().padStart(2, '0'),
+    );
   });
   it('should not render hours when timer is less than 1 hour', () => {
     const { queryByTestId } = render(<PomodoroTimer />);

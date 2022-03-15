@@ -12,7 +12,8 @@ function countProgress(initial: ITime, current: ITime): number {
   currentSeconds += current.minutes * 60;
   currentSeconds += current.seconds;
 
-  const progress = Math.round(Math.abs((currentSeconds / initialSeconds) - 1) * 10000) / 100;
+  const progress =
+    Math.round(Math.abs(currentSeconds / initialSeconds - 1) * 10000) / 100;
 
   return progress;
 }

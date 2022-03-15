@@ -77,7 +77,11 @@ describe('usePomodoro', () => {
 
     passTimeBySeconds(3);
 
-    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 24, seconds: 57 });
+    expect(pomodoro.current.count).toMatchObject({
+      hours: 0,
+      minutes: 24,
+      seconds: 57,
+    });
   });
   it('should be able to go to next mode', () => {
     act(() => {
@@ -86,14 +90,22 @@ describe('usePomodoro', () => {
 
     passTimeUntilEnd();
 
-    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 5, seconds: 0 });
+    expect(pomodoro.current.count).toMatchObject({
+      hours: 0,
+      minutes: 5,
+      seconds: 0,
+    });
     expect(pomodoro.current.isRunning).toBeFalsy();
     expect(pomodoro.current.mode).toBe('break');
   });
   it('should be able to do a long break', () => {
     passTimeByCycles(pomodoro.current.cyclesToLongBreak);
 
-    expect(pomodoro.current.count).toMatchObject({ hours: 0, minutes: 15, seconds: 0 });
+    expect(pomodoro.current.count).toMatchObject({
+      hours: 0,
+      minutes: 15,
+      seconds: 0,
+    });
     expect(pomodoro.current.isRunning).toBeFalsy();
     expect(pomodoro.current.cycles).toBe(pomodoro.current.cyclesToLongBreak);
     expect(pomodoro.current.mode).toBe('longBreak');

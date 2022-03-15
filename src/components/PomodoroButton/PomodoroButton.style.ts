@@ -10,7 +10,7 @@ export const Button = styled.button`
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
   transition: 0.35s;
-  
+
   &:hover {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }

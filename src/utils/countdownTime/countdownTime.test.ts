@@ -25,7 +25,7 @@ describe('countdownTime', () => {
     time = countdownTime(time);
     expect(time).toMatchObject({ hours: 4, minutes: 59, seconds: 59 });
   });
-  it('shouldn\'t count to negatives', () => {
+  it("shouldn't count to negatives", () => {
     const allZeroes = { hours: 0, minutes: 0, seconds: 0 };
 
     time = allZeroes;
