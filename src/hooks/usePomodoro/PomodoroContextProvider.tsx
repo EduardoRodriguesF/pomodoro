@@ -1,3 +1,4 @@
+import useSettings from 'hooks/useSettings';
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { ITime } from 'types';
 import countdownTime from 'utils/countdownTime';
@@ -6,14 +7,11 @@ import { PomodoroContext, PomodoroMode } from '.';
 let countdownTimeout: NodeJS.Timeout;
 
 const PomodoroContextProvider: React.FC = ({ children }) => {
+  const { preset } = useSettings();
+
   const [isRunning, setIsRunning] = useState(false);
-  const [initialCount, setInitialCount] = useState({
-    hours: 0,
-    minutes: 25,
-    seconds: 0,
-  });
+  const [initialCount, setInitialCount] = useState(preset.timer.focus);
   const [count, setCount] = useState(initialCount);
-  const [cyclesToLongBreak, setCyclesToLongBreak] = useState(5);
   const [cycles, setCycles] = useState(0);
   const [mode, setMode] = useState(PomodoroMode.work);
 
@@ -33,14 +31,14 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
   const changeToNextMode = useCallback(() => {
     const newCycle = cycles + 1;
     let newMode = PomodoroMode.work;
-    const newCount = { hours: 0, minutes: 25, seconds: 0 };
+    let newCount = preset.timer.focus;
 
     if (mode === PomodoroMode.work) {
       newMode = PomodoroMode.break;
-      newCount.minutes = 5;
-      if (newCycle % cyclesToLongBreak === 0) {
+      newCount = preset.timer.break;
+      if (newCycle % preset.longBreakInterval === 0) {
         newMode = PomodoroMode.longBreak;
-        newCount.minutes = 15;
+        newCount = preset.timer.longBreak;
       }
     }
 
@@ -49,7 +47,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     setCycles(newCycle);
     newTimer(newCount);
     clearTimeout(countdownTimeout);
-  }, [cycles, cyclesToLongBreak, mode, newTimer]);
+  }, [cycles, preset, mode, newTimer]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -74,7 +72,6 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
       pauseTimer,
       newTimer,
       cycles,
-      cyclesToLongBreak,
       mode,
       count,
       initialCount,
@@ -84,7 +81,6 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
       startTimer,
       pauseTimer,
       count,
-      cyclesToLongBreak,
       cycles,
       mode,
       newTimer,

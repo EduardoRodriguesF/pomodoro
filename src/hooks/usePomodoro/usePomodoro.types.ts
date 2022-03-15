@@ -13,7 +13,6 @@ interface IPomodoroContextProps {
   newTimer: (newCount: ITime) => void;
   mode: IPomodoroMode;
   cycles: number;
-  cyclesToLongBreak: number;
   count: ITime;
   initialCount: ITime;
 }
