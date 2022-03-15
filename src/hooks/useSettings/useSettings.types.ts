@@ -6,14 +6,14 @@ interface ITimerSet {
   longBreak: ITime;
 }
 
-interface IConfig {
+interface IPreset {
   timer: ITimerSet;
   pauseAfterCycle: boolean;
   longBreakInterval: number;
 }
 
 interface ISettingsContextProps {
-  preset: IConfig;
+  preset: IPreset;
   setWorkTime: (time: ITime) => void;
   setBreakTime: (time: ITime) => void;
   setLongBreakTime: (time: ITime) => void;
@@ -21,4 +21,4 @@ interface ISettingsContextProps {
   toggleAutoCycle: () => void;
 }
 
-export type { ITimerSet, IConfig, ISettingsContextProps };
+export type { ITimerSet, IPreset, ISettingsContextProps };
