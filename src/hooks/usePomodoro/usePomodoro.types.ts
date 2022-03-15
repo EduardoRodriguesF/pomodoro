@@ -7,9 +7,9 @@ interface IPomodoroModesObject {
 }
 
 interface IPomodoroContextProps {
-  isRunning: boolean,
-  startTimer: () => void,
-  pauseTimer: () => void,
+  isRunning: boolean;
+  startTimer: () => void;
+  pauseTimer: () => void;
   newTimer: (newCount: ITime) => void;
   mode: IPomodoroMode;
   cycles: number;
