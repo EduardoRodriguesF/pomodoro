@@ -2,13 +2,16 @@ import React from 'react';
 import Dashboard from 'pages/Dashboard';
 import { PomodoroContextProvider } from 'hooks/usePomodoro';
 import GlobalStyle from 'styles/global';
+import { SettingsContextProvider } from 'hooks/useSettings';
 
 const App: React.FC = () => (
   <>
     <GlobalStyle />
-    <PomodoroContextProvider>
-      <Dashboard />
-    </PomodoroContextProvider>
+    <SettingsContextProvider>
+      <PomodoroContextProvider>
+        <Dashboard />
+      </PomodoroContextProvider>
+    </SettingsContextProvider>
   </>
 );
 
