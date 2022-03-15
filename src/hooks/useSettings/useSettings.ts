@@ -20,7 +20,7 @@ const DEFAULT_VALUE = {
         seconds: 0,
       },
     },
-    pauseAfterCycle: false,
+    pauseAfterCycle: true,
     longBreakInterval: 5,
   },
 };

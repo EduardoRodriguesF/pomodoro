@@ -42,7 +42,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
       }
     }
 
-    setIsRunning(false);
+    if (preset.pauseAfterCycle) setIsRunning(false);
     setMode(newMode);
     setCycles(newCycle);
     newTimer(newCount);
