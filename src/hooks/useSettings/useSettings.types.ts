@@ -14,7 +14,7 @@ interface IPreset {
 
 interface ISettingsContextProps {
   preset: IPreset;
-  setWorkTime: (time: ITime) => void;
+  setFocusTime: (time: ITime) => void;
   setBreakTime: (time: ITime) => void;
   setLongBreakTime: (time: ITime) => void;
   setLongBreakInterval: (interval: number) => void;
