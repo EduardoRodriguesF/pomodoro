@@ -12,8 +12,8 @@ interface IConfig {
   longBreakInterval: number;
 }
 
-interface IPomodoroConfigContextProps {
-  config: IConfig;
+interface ISettingsContextProps {
+  preset: IConfig;
   setWorkTime: (time: ITime) => void;
   setBreakTime: (time: ITime) => void;
   setLongBreakTime: (time: ITime) => void;
@@ -21,4 +21,4 @@ interface IPomodoroConfigContextProps {
   toggleAutoCycle: () => void;
 }
 
-export type { ITimerSet, IConfig, IPomodoroConfigContextProps };
+export type { ITimerSet, IConfig, ISettingsContextProps };
