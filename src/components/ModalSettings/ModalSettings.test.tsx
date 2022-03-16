@@ -42,4 +42,25 @@ describe('ModalSettings component', () => {
 
     expect(modal).toBeNull();
   });
+  it('should be able to toggle pause after cycle', () => {
+    const { getByTestId } = render(<ModalSettings />);
+
+    const openButton = getByTestId('toggleModal');
+
+    act(() => {
+      fireEvent.click(openButton);
+    });
+
+    const togglePauseAfterCycleButton = getByTestId('togglePauseAfterCycle');
+
+    const isChecked = togglePauseAfterCycleButton.getAttribute('checked');
+
+    act(() => {
+      fireEvent.click(togglePauseAfterCycleButton);
+    });
+
+    expect(togglePauseAfterCycleButton.getAttribute('checked')).toBe(
+      !isChecked,
+    );
+  });
 });
