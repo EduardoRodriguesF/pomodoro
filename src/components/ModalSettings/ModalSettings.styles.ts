@@ -19,6 +19,13 @@ export const Modal = styled.div`
   border-radius: 16px;
 `;
 
+export const SettingsItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+`;
+
 export const OpenModalButton = styled.button`
   position: absolute;
   right: 16px;

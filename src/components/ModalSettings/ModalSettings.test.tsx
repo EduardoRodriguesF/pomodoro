@@ -53,14 +53,12 @@ describe('ModalSettings component', () => {
 
     const togglePauseAfterCycleButton = getByTestId('togglePauseAfterCycle');
 
-    const isChecked = togglePauseAfterCycleButton.getAttribute('checked');
+    fireEvent.click(togglePauseAfterCycleButton);
 
-    act(() => {
-      fireEvent.click(togglePauseAfterCycleButton);
-    });
+    expect(togglePauseAfterCycleButton).not.toBeChecked();
 
-    expect(togglePauseAfterCycleButton.getAttribute('checked')).toBe(
-      !isChecked,
-    );
+    fireEvent.click(togglePauseAfterCycleButton);
+
+    expect(togglePauseAfterCycleButton).toBeChecked();
   });
 });
