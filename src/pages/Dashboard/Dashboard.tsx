@@ -1,6 +1,7 @@
-import PomodoroButton from 'components/PomodoroButton';
 import React from 'react';
+import PomodoroButton from 'components/PomodoroButton';
 import PomodoroTimer from 'components/PomodoroTimer';
+import ModalSettings from 'components/ModalSettings';
 
 import { Wrapper, ButtonsRow } from './Dashboard.style';
 
@@ -11,6 +12,7 @@ const Dashboard: React.FC = () => (
     <ButtonsRow>
       <PomodoroButton />
     </ButtonsRow>
+    <ModalSettings />
   </Wrapper>
 );
 
