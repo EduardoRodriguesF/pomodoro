@@ -7,10 +7,16 @@ import { PomodoroContext, PomodoroMode } from '.';
 let countdownTimeout: NodeJS.Timeout;
 
 const PomodoroContextProvider: React.FC = ({ children }) => {
-  const { preset } = useSettings();
+  const {
+    focusTime,
+    breakTime,
+    longBreakTime,
+    longBreakInterval,
+    pauseAfterCycle,
+  } = useSettings();
 
   const [isRunning, setIsRunning] = useState(false);
-  const [initialCount, setInitialCount] = useState(preset.timer.focus);
+  const [initialCount, setInitialCount] = useState(focusTime);
   const [count, setCount] = useState(initialCount);
   const [cycles, setCycles] = useState(0);
   const [mode, setMode] = useState(PomodoroMode.work);
@@ -31,23 +37,32 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
   const changeToNextMode = useCallback(() => {
     const newCycle = cycles + 1;
     let newMode = PomodoroMode.work;
-    let newCount = preset.timer.focus;
+    let newCount = focusTime;
 
     if (mode === PomodoroMode.work) {
       newMode = PomodoroMode.break;
-      newCount = preset.timer.break;
-      if (newCycle % preset.longBreakInterval === 0) {
+      newCount = breakTime;
+      if (newCycle % longBreakInterval === 0) {
         newMode = PomodoroMode.longBreak;
-        newCount = preset.timer.longBreak;
+        newCount = longBreakTime;
       }
     }
 
-    if (preset.pauseAfterCycle) setIsRunning(false);
+    if (pauseAfterCycle) setIsRunning(false);
     setMode(newMode);
     setCycles(newCycle);
     newTimer(newCount);
     clearTimeout(countdownTimeout);
-  }, [cycles, preset, mode, newTimer]);
+  }, [
+    cycles,
+    focusTime,
+    mode,
+    pauseAfterCycle,
+    newTimer,
+    breakTime,
+    longBreakInterval,
+    longBreakTime,
+  ]);
 
   useEffect(() => {
     if (!isRunning) {

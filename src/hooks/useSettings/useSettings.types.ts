@@ -1,19 +1,11 @@
 import { ITime } from 'types';
 
-interface ITimerSet {
-  focus: ITime;
-  break: ITime;
-  longBreak: ITime;
-}
-
-interface IPreset {
-  timer: ITimerSet;
+interface ISettingsContextProps {
+  focusTime: ITime;
+  breakTime: ITime;
+  longBreakTime: ITime;
   pauseAfterCycle: boolean;
   longBreakInterval: number;
-}
-
-interface ISettingsContextProps {
-  preset: IPreset;
   setFocusTime: (time: ITime) => void;
   setBreakTime: (time: ITime) => void;
   setLongBreakTime: (time: ITime) => void;
@@ -21,4 +13,4 @@ interface ISettingsContextProps {
   togglePauseAfterCycle: () => void;
 }
 
-export type { ITimerSet, IPreset, ISettingsContextProps };
+export type { ISettingsContextProps };

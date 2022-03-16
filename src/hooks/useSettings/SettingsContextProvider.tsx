@@ -1,89 +1,50 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { SettingsContext } from '.';
-import { IPreset } from './useSettings.types';
 
 const DEFAULT_VALUE = {
-  preset: {
-    timer: {
-      focus: {
-        hours: 0,
-        minutes: 25,
-        seconds: 0,
-      },
-      break: {
-        hours: 0,
-        minutes: 5,
-        seconds: 0,
-      },
-      longBreak: {
-        hours: 0,
-        minutes: 15,
-        seconds: 0,
-      },
-    },
-    pauseAfterCycle: false,
-    longBreakInterval: 5,
+  focusTime: {
+    hours: 0,
+    minutes: 25,
+    seconds: 0,
   },
+  breakTime: {
+    hours: 0,
+    minutes: 5,
+    seconds: 0,
+  },
+  longBreakTime: {
+    hours: 0,
+    minutes: 15,
+    seconds: 0,
+  },
+  pauseAfterCycle: true,
+  longBreakInterval: 5,
 };
 
 const SettingsContextProvider: React.FC = ({ children }) => {
-  const [preset, setPreset] = useState(DEFAULT_VALUE.preset as IPreset);
-
-  const setFocusTime = useCallback(
-    time => {
-      const newPreset = preset;
-
-      newPreset.timer.focus = time;
-
-      setPreset(newPreset);
-    },
-    [preset],
+  const [focusTime, setFocusTime] = useState(DEFAULT_VALUE.focusTime);
+  const [breakTime, setBreakTime] = useState(DEFAULT_VALUE.breakTime);
+  const [longBreakTime, setLongBreakTime] = useState(
+    DEFAULT_VALUE.longBreakTime,
   );
-
-  const setBreakTime = useCallback(
-    time => {
-      const newPreset = preset;
-
-      newPreset.timer.break = time;
-
-      setPreset(newPreset);
-    },
-    [preset],
+  const [longBreakInterval, setLongBreakInterval] = useState(
+    DEFAULT_VALUE.longBreakInterval,
   );
-
-  const setLongBreakTime = useCallback(
-    time => {
-      const newPreset = preset;
-
-      newPreset.timer.longBreak = time;
-
-      setPreset(newPreset);
-    },
-    [preset],
-  );
-
-  const setLongBreakInterval = useCallback(
-    interval => {
-      const newPreset = preset;
-
-      newPreset.longBreakInterval = interval * 2 + 1;
-
-      setPreset(newPreset);
-    },
-    [preset],
+  const [pauseAfterCycle, setPauseAfterCycle] = useState(
+    DEFAULT_VALUE.pauseAfterCycle,
   );
 
   const togglePauseAfterCycle = useCallback(() => {
-    const newPreset = preset;
-
-    newPreset.pauseAfterCycle = !newPreset.pauseAfterCycle;
-
-    setPreset(newPreset);
-  }, [preset]);
+    setPauseAfterCycle(!pauseAfterCycle);
+  }, [pauseAfterCycle]);
 
   const settings = useMemo(
     () => ({
-      preset,
+      focusTime,
+      breakTime,
+      longBreakTime,
+      longBreakInterval,
+      pauseAfterCycle,
       setFocusTime,
       setBreakTime,
       setLongBreakTime,
@@ -91,11 +52,11 @@ const SettingsContextProvider: React.FC = ({ children }) => {
       togglePauseAfterCycle,
     }),
     [
-      preset,
-      setFocusTime,
-      setBreakTime,
-      setLongBreakTime,
-      setLongBreakInterval,
+      focusTime,
+      breakTime,
+      longBreakTime,
+      longBreakInterval,
+      pauseAfterCycle,
       togglePauseAfterCycle,
     ],
   );
