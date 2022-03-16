@@ -38,7 +38,7 @@ const ModalSettings: React.FC = () => {
                 onClick={handleModalToggle}
                 data-testid="closeButton"
               >
-                <FiX size={32} />
+                <FiX size={20} />
               </CloseModalButton>
             </header>
             <SettingsItem>

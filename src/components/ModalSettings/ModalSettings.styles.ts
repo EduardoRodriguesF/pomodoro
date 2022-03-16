@@ -13,10 +13,21 @@ export const ModalOverlay = styled.div`
 `;
 
 export const Modal = styled.div`
+  width: 100%;
   max-width: 300px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
   background: #fff;
-  border-radius: 16px;
+  border-radius: 8px;
+  padding: 12px 16px 24px;
+  margin: 0 8px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
 `;
 
 export const SettingsItem = styled.div`
