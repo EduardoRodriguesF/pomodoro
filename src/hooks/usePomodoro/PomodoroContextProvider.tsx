@@ -19,7 +19,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
   const [initialCount, setInitialCount] = useState(focusTime);
   const [count, setCount] = useState(initialCount);
   const [cycles, setCycles] = useState(0);
-  const [mode, setMode] = useState(PomodoroMode.work);
+  const [mode, setMode] = useState(PomodoroMode.focus);
 
   const startTimer = useCallback(() => {
     setIsRunning(true);
@@ -36,10 +36,10 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
 
   const changeToNextMode = useCallback(() => {
     const newCycle = cycles + 1;
-    let newMode = PomodoroMode.work;
+    let newMode = PomodoroMode.focus;
     let newCount = focusTime;
 
-    if (mode === PomodoroMode.work) {
+    if (mode === PomodoroMode.focus) {
       newMode = PomodoroMode.break;
       newCount = breakTime;
       if (newCycle % longBreakInterval === 0) {

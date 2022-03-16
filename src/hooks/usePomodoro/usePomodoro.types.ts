@@ -1,6 +1,6 @@
 import { ITime } from 'types';
 
-type IPomodoroMode = 'work' | 'break' | 'longBreak';
+type IPomodoroMode = 'focus' | 'break' | 'longBreak';
 
 interface IPomodoroModesObject {
   [key: string]: IPomodoroMode;
