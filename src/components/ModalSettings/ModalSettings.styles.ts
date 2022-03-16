@@ -18,7 +18,7 @@ export const Modal = styled.div`
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
   background: #fff;
   border-radius: 8px;
-  padding: 12px 16px 24px;
+  padding: 12px 16px 16px;
   margin: 0 8px;
 
   header {
@@ -35,6 +35,18 @@ export const SettingsItem = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 32px;
+`;
+
+export const BottomNavigation = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+`;
+
+export const ConfirmationButton = styled.button`
+  text-align: center;
+  font-weight: 800;
+  border-radius: 8px;
 `;
 
 export const OpenModalButton = styled.button`

@@ -8,6 +8,8 @@ import {
   OpenModalButton,
   CloseModalButton,
   SettingsItem,
+  BottomNavigation,
+  ConfirmationButton,
 } from './ModalSettings.styles';
 
 const ModalSettings: React.FC = () => {
@@ -50,6 +52,11 @@ const ModalSettings: React.FC = () => {
                 data-testid="togglePauseAfterCycle"
               />
             </SettingsItem>
+            <BottomNavigation>
+              <ConfirmationButton onClick={handleModalToggle}>
+                OK
+              </ConfirmationButton>
+            </BottomNavigation>
           </Modal>
         </ModalOverlay>
       )}
