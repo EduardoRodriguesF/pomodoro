@@ -21,6 +21,12 @@ const ModalSettings: React.FC = () => {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
+  const handleClickOutsideModal = useCallback(e => {
+    if (e.target !== e.currentTarget) return;
+
+    setIsOpen(false);
+  }, []);
+
   return (
     <>
       <OpenModalButton
@@ -31,7 +37,7 @@ const ModalSettings: React.FC = () => {
         <FiSettings size={32} />
       </OpenModalButton>
       {isOpen && (
-        <ModalOverlay data-testid="modal">
+        <ModalOverlay onClick={handleClickOutsideModal} data-testid="modal">
           <Modal>
             <header>
               <span>Settings</span>
