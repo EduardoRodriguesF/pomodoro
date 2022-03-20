@@ -13,7 +13,11 @@ const PomodoroButton: React.FC = () => {
   }, [isRunning, startTimer, pauseTimer]);
 
   return (
-    <Button type="button" onClick={handleClick}>
+    <Button
+      type="button"
+      onClick={handleClick}
+      aria-label={isRunning ? 'Pause' : 'Play'}
+    >
       {isRunning ? (
         <FiPause size={32} data-testid="pause-icon" />
       ) : (

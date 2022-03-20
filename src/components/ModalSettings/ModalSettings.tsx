@@ -33,6 +33,7 @@ const ModalSettings: React.FC = () => {
         type="button"
         onClick={handleModalToggle}
         data-testid="toggleModal"
+        aria-label="Settings"
       >
         <FiSettings size={32} />
       </OpenModalButton>
