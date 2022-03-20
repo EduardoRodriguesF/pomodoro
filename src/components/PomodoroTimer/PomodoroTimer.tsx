@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { usePomodoro } from 'hooks/usePomodoro';
 import formatCount from 'utils/formatCount';
-import PomodoroRing from 'components/PomodoroRing';
+import countProgress from 'utils/countProgress';
+import ProgressRing from 'components/ProgressRing';
 import { Timestamp, Wrapper } from './PomodoroTimer.style';
 
 const formattedCountDefault = {
@@ -12,7 +13,7 @@ const formattedCountDefault = {
 
 const PomodoroTimer: React.FC = () => {
   const [formattedCount, setFormattedCount] = useState(formattedCountDefault);
-  const { count } = usePomodoro();
+  const { initialCount, count } = usePomodoro();
 
   useEffect(() => {
     setFormattedCount(formatCount(count));
@@ -29,7 +30,7 @@ const PomodoroTimer: React.FC = () => {
       <Timestamp data-testid="minutes">{formattedCount.minutes}</Timestamp>
       <span>:</span>
       <Timestamp data-testid="seconds">{formattedCount.seconds}</Timestamp>
-      <PomodoroRing />
+      <ProgressRing progress={countProgress(initialCount, count)} />
     </Wrapper>
   );
 };

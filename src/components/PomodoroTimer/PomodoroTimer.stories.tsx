@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { PomodoroContextProvider, usePomodoro } from 'hooks/usePomodoro';
-import PomodoroRing from 'components/PomodoroRing';
+import ProgressRing from 'components/ProgressRing';
 import PomodoroTimer from '.';
 
 export default {
   title: 'PomodoroTimer',
   component: PomodoroTimer,
-  subcomponents: { PomodoroRing },
+  subcomponents: { ProgressRing },
   decorators: [
     Story => (
       <PomodoroContextProvider>
