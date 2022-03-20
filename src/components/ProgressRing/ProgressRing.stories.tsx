@@ -25,3 +25,24 @@ export const Default = {
     progress: 50,
   },
 };
+
+export const Secondary = {
+  args: {
+    progress: 50,
+    color: '#1b2530',
+  },
+};
+
+export const Green = {
+  args: {
+    progress: 50,
+    color: '#4bc25b',
+  },
+};
+
+export const Blue = {
+  args: {
+    progress: 50,
+    color: '#378cec',
+  },
+};
