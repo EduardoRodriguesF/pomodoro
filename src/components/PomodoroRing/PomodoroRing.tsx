@@ -12,7 +12,7 @@ const PomodoroRing: React.FC = () => {
   return (
     <Wrapper data-testid="progress">
       <CircularProgressbar
-        value={countProgress(initialCount, count) || 0}
+        value={countProgress(initialCount, count)}
         strokeWidth={3}
         styles={buildStyles({
           textColor: 'red',

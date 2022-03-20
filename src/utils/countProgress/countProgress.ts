@@ -15,7 +15,7 @@ function countProgress(initial: ITime, current: ITime): number {
   const progress =
     Math.round(Math.abs(currentSeconds / initialSeconds - 1) * 10000) / 100;
 
-  return progress;
+  return progress || 0;
 }
 
 export default countProgress;
