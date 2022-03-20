@@ -5,7 +5,7 @@ interface IPomodoroModeObject {
 }
 
 const PomodoroMode: IPomodoroModeObject = {
-  work: 'work',
+  focus: 'focus',
   break: 'break',
   longBreak: 'longBreak',
 };
