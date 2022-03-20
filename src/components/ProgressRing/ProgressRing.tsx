@@ -4,7 +4,7 @@ import { Wrapper } from './ProgressRing.style';
 import 'react-circular-progressbar/dist/styles.css';
 import { IProgressRingProps } from './ProgressRing.types';
 
-const ProgressRing: React.FC<IProgressRingProps> = ({ progress }) => (
+const ProgressRing: React.FC<IProgressRingProps> = ({ progress = 0 }) => (
   <Wrapper data-testid="progress">
     <CircularProgressbar
       value={progress}
