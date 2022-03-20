@@ -2,8 +2,10 @@
 
 > A simple productivity web application.
 ## Screenshots
-<img src="src/assets/screenshot0.png" />
-<img src="src/assets/screenshot1.png" />
+<div style="display: flex">
+  <img width="300" src="src/assets/screenshot0.png" />
+  <img width="300" src="src/assets/screenshot1.png" />
+</div>
 
 ## Usage
 
