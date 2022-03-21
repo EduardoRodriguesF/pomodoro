@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { FiPlay } from 'react-icons/fi';
 import Button from '.';
 
 export default {
@@ -41,4 +42,11 @@ Disabled.args = {
   children: 'Button',
   variant: 'primary',
   disabled: true,
+};
+
+export const Round = Template.bind({});
+Round.args = {
+  title: 'Button',
+  children: <FiPlay size={24} />,
+  round: true,
 };

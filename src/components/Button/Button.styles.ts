@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface IButtonStyleProps {
   variant: 'primary' | 'secondary' | 'text';
+  round: boolean;
 }
 
 export const Wrapper = styled.button<IButtonStyleProps>`
@@ -40,6 +41,13 @@ export const Wrapper = styled.button<IButtonStyleProps>`
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
       }
+    `}
+
+  ${({ round }) =>
+    round &&
+    css`
+      aspect-ratio: 1/1;
+      border-radius: 50%;
     `}
 
   &:active {
