@@ -22,21 +22,21 @@ Primary.args = {
 };
 
 export const Secondary = Template.bind({});
-Primary.args = {
+Secondary.args = {
   title: 'Button',
   children: 'Button',
   variant: 'secondary',
 };
 
 export const Text = Template.bind({});
-Primary.args = {
+Text.args = {
   title: 'Button',
   children: 'Button',
   variant: 'text',
 };
 
 export const Disabled = Template.bind({});
-Primary.args = {
+Disabled.args = {
   title: 'Button',
   children: 'Button',
   variant: 'primary',
