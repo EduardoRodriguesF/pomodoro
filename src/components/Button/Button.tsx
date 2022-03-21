@@ -7,8 +7,8 @@ const Button: React.FC<IButtonProps> = ({
   children,
   title,
   variant = 'primary',
-  disabled,
-  round,
+  disabled = false,
+  round = false,
   ...rest
 }) => (
   <Wrapper
