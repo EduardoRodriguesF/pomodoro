@@ -24,3 +24,7 @@ yarn start
 npm run start
 ```
 A browser window will automatically open on `localhost:3000`.
+
+## License
+
+This project is under [MIT](https://github.com/EduardoRodriguesF/pomodoro/blob/main/LICENSE) license.
