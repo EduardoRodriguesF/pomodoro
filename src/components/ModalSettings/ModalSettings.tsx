@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import useSettings from 'hooks/useSettings';
 import React, { useCallback, useState } from 'react';
 import { FiSettings, FiX } from 'react-icons/fi';
@@ -6,10 +7,8 @@ import {
   ModalOverlay,
   Modal,
   OpenModalButton,
-  CloseModalButton,
   SettingsItem,
   BottomNavigation,
-  ConfirmationButton,
 } from './ModalSettings.styles';
 
 const ModalSettings: React.FC = () => {
@@ -42,13 +41,15 @@ const ModalSettings: React.FC = () => {
           <Modal>
             <header>
               <span>Settings</span>
-              <CloseModalButton
-                type="button"
+              <Button
+                title="Close"
+                variant="text"
+                size="content"
                 onClick={handleModalToggle}
                 data-testid="closeButton"
               >
                 <FiX size={20} />
-              </CloseModalButton>
+              </Button>
             </header>
             <SettingsItem>
               <span>Pause after cycle ends</span>
@@ -60,9 +61,14 @@ const ModalSettings: React.FC = () => {
               />
             </SettingsItem>
             <BottomNavigation>
-              <ConfirmationButton onClick={handleModalToggle}>
+              <Button
+                title="Ok"
+                variant="text"
+                size="content"
+                onClick={handleModalToggle}
+              >
                 OK
-              </ConfirmationButton>
+              </Button>
             </BottomNavigation>
           </Modal>
         </ModalOverlay>

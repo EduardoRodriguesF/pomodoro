@@ -43,12 +43,6 @@ export const BottomNavigation = styled.div`
   margin-top: 20px;
 `;
 
-export const ConfirmationButton = styled.button`
-  text-align: center;
-  font-weight: 800;
-  border-radius: 8px;
-`;
-
 export const OpenModalButton = styled.button`
   position: absolute;
   right: 16px;
