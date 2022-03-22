@@ -7,6 +7,7 @@ const Button: React.FC<IButtonProps> = ({
   children,
   title,
   variant = 'primary',
+  size = 'regular',
   disabled = false,
   round = false,
   ...rest
@@ -14,6 +15,7 @@ const Button: React.FC<IButtonProps> = ({
   <Wrapper
     type="button"
     variant={variant}
+    size={size}
     aria-label={title}
     disabled={disabled}
     round={round}

@@ -10,6 +10,9 @@ export default {
     variant: {
       options: ['primary', 'secondary', 'text'],
     },
+    size: {
+      options: ['content', 'regular', 'medium', 'large'],
+    },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -20,6 +23,7 @@ Primary.args = {
   title: 'Button',
   children: 'Button',
   variant: 'primary',
+  size: 'medium',
 };
 
 export const Secondary = Template.bind({});

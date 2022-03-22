@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface IButtonStyleProps {
   variant: 'primary' | 'secondary' | 'text';
+  size: 'content' | 'regular' | 'medium' | 'large';
   round: boolean;
 }
 
@@ -10,9 +11,41 @@ export const Wrapper = styled.button<IButtonStyleProps>`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 16px;
   transition: 0.35s;
+
+  ${({ size }) => {
+    let result;
+
+    switch (size) {
+      case 'content':
+        result = css`
+          padding: 0;
+        `;
+        break;
+      case 'medium':
+        result = css`
+          font-size: 20px;
+          padding: 16px 32px;
+          border-radius: 32px;
+        `;
+        break;
+      case 'large':
+        result = css`
+          font-size: 32px;
+          padding: 24px 48px;
+          border-radius: 48px;
+        `;
+        break;
+      default:
+        result = css`
+          font-size: 16px;
+          padding: 10px 20px;
+          border-radius: 20px;
+        `;
+    }
+
+    return result;
+  }}
 
   ${({ variant }) => {
     let result;
