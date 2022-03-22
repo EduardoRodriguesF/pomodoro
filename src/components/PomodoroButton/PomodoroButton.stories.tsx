@@ -1,4 +1,5 @@
 import { ComponentMeta } from '@storybook/react';
+import Button from 'components/Button';
 import { PomodoroContextProvider } from 'hooks/usePomodoro';
 import React from 'react';
 import PomodoroButton from './PomodoroButton';
@@ -6,6 +7,7 @@ import PomodoroButton from './PomodoroButton';
 export default {
   title: 'PomodoroButton',
   component: PomodoroButton,
+  subcomponents: { Button },
   decorators: [
     Story => (
       <PomodoroContextProvider>

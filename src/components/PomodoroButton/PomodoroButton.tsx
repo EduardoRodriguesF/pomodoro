@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react';
 import { FiPause, FiPlay } from 'react-icons/fi';
 import { usePomodoro } from 'hooks/usePomodoro';
-
-import { Button } from './PomodoroButton.style';
+import Button from 'components/Button';
 
 const PomodoroButton: React.FC = () => {
   const { startTimer, pauseTimer, isRunning } = usePomodoro();
@@ -14,9 +13,11 @@ const PomodoroButton: React.FC = () => {
 
   return (
     <Button
-      type="button"
+      title={isRunning ? 'Pause' : 'Play'}
+      round
+      variant={isRunning ? 'secondary' : 'primary'}
+      size={isRunning ? 'regular' : 'medium'}
       onClick={handleClick}
-      aria-label={isRunning ? 'Pause' : 'Play'}
     >
       {isRunning ? (
         <FiPause size={32} data-testid="pause-icon" />
