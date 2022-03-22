@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import styled from 'styled-components';
 
 export const ModalOverlay = styled.div`
@@ -43,22 +44,9 @@ export const BottomNavigation = styled.div`
   margin-top: 20px;
 `;
 
-export const OpenModalButton = styled.button`
+export const OpenModalButton = styled(Button)`
   position: absolute;
   right: 16px;
   bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1/1;
-  width: 72px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  transition: 0.35s;
-
-  &:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
 `;
 export const CloseModalButton = styled.button``;
