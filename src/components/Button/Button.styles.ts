@@ -25,7 +25,7 @@ export const Wrapper = styled.button<IButtonStyleProps>`
       case 'small':
         result = css`
           font-size: 12px;
-          padding: 8px 16px;
+          padding: 6px 12px;
           border-radius: 16px;
         `;
         break;
