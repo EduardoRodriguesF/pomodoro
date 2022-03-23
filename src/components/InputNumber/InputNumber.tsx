@@ -44,6 +44,7 @@ const InputNumber: React.FC<IInputNumberProps> = ({
         title="Decrease"
         round
         data-testid="decrease"
+        size="content"
         onClick={handleDecrease}
         disabled={!!min && value <= min}
       >
@@ -54,6 +55,7 @@ const InputNumber: React.FC<IInputNumberProps> = ({
         title="Increase"
         round
         data-testid="increase"
+        size="content"
         onClick={handleIncrease}
       >
         <FiPlus size={16} />
