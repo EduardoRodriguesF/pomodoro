@@ -27,14 +27,16 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.tsx",
-      "!src/reportWebVitals.ts",
-      "!src/App.tsx",
+      "!src/*.tsx",
+      "!src/*.ts",
       "!src/**/index.ts",
       "!src/**/*.types.ts",
       "!src/*.d.ts",
       "!src/styles/**",
-      "!src/types/**"
+      "!src/types/**",
+      "!src/**/*.stories.tsx",
+      "!src/**/*.stories.ts",
+      "!public"
     ]
   },
   "scripts": {
