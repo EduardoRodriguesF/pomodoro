@@ -86,6 +86,7 @@ export const Wrapper = styled.button<IButtonStyleProps>`
   &:active {
     opacity: 0.9;
     transition: 0.1s;
+    transform: scale(0.98);
   }
 
   &:disabled {
