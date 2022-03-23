@@ -19,7 +19,7 @@ const defaultSettings = {
     minutes: 15,
     seconds: 0,
   },
-  longBreakInterval: 5,
+  longBreakInterval: 4,
   pauseAfterCycle: true,
 };
 

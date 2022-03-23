@@ -18,6 +18,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [initialCount, setInitialCount] = useState(focusTime);
   const [count, setCount] = useState(initialCount);
+  const [breaksPassed, setBreaksPassed] = useState(0);
   const [cycles, setCycles] = useState(0);
   const [mode, setMode] = useState(PomodoroMode.focus);
 
@@ -42,10 +43,12 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     if (mode === PomodoroMode.focus) {
       newMode = PomodoroMode.break;
       newCount = breakTime;
-      if (newCycle % longBreakInterval === 0) {
+      if (breaksPassed > 0 && breaksPassed % (longBreakInterval - 1) === 0) {
         newMode = PomodoroMode.longBreak;
         newCount = longBreakTime;
       }
+    } else {
+      setBreaksPassed(breaksPassed + 1);
     }
 
     if (pauseAfterCycle) setIsRunning(false);
@@ -60,6 +63,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
     pauseAfterCycle,
     newTimer,
     breakTime,
+    breaksPassed,
     longBreakInterval,
     longBreakTime,
   ]);
@@ -87,6 +91,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
       pauseTimer,
       newTimer,
       cycles,
+      breaksPassed,
       mode,
       count,
       initialCount,
@@ -97,6 +102,7 @@ const PomodoroContextProvider: React.FC = ({ children }) => {
       pauseTimer,
       count,
       cycles,
+      breaksPassed,
       mode,
       newTimer,
       initialCount,
