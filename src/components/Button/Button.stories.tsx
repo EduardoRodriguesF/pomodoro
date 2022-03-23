@@ -11,7 +11,7 @@ export default {
       options: ['primary', 'secondary', 'text'],
     },
     size: {
-      options: ['content', 'regular', 'medium', 'large'],
+      options: ['content', 'small', 'regular', 'medium', 'large'],
     },
   },
 } as ComponentMeta<typeof Button>;

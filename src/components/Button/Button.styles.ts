@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface IButtonStyleProps {
   variant: 'primary' | 'secondary' | 'text';
-  size: 'content' | 'regular' | 'medium' | 'large';
+  size: 'content' | 'small' | 'regular' | 'medium' | 'large';
   round: boolean;
 }
 
@@ -20,6 +20,13 @@ export const Wrapper = styled.button<IButtonStyleProps>`
       case 'content':
         result = css`
           padding: 0;
+        `;
+        break;
+      case 'small':
+        result = css`
+          font-size: 12px;
+          padding: 8px 16px;
+          border-radius: 16px;
         `;
         break;
       case 'medium':
