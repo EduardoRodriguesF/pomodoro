@@ -16,7 +16,6 @@ const PomodoroButton: React.FC = () => {
       title={isRunning ? 'Pause' : 'Play'}
       round
       variant={isRunning ? 'secondary' : 'primary'}
-      size={isRunning ? 'regular' : 'medium'}
       onClick={handleClick}
     >
       {isRunning ? (
