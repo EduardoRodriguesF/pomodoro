@@ -46,7 +46,7 @@ const InputNumber: React.FC<IInputNumberProps> = ({
         data-testid="decrease"
         size="content"
         onClick={handleDecrease}
-        disabled={!!min && value <= min}
+        disabled={(!!min && value <= min) || (!allowNegatives && value <= 0)}
       >
         <FiMinus size={16} />
       </Button>
