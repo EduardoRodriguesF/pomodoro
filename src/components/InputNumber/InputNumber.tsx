@@ -57,6 +57,7 @@ const InputNumber: React.FC<IInputNumberProps> = ({
         data-testid="increase"
         size="content"
         onClick={handleIncrease}
+        disabled={!!max && value >= max}
       >
         <FiPlus size={16} />
       </Button>

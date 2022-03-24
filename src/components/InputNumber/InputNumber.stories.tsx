@@ -14,3 +14,15 @@ const Template: ComponentStory<typeof InputNumber> = args => (
 );
 
 export const Default = Template.bind({});
+
+export const Negatives = Template.bind({});
+Negatives.args = {
+  allowNegatives: true,
+  defaultValue: -3,
+};
+
+export const MinAndMax = Template.bind({});
+MinAndMax.args = {
+  min: 1,
+  max: 3,
+};
