@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import InputNumber from 'components/InputNumber';
 import useSettings from 'hooks/useSettings';
 import React, { useCallback, useState } from 'react';
 import { FiSettings, FiX } from 'react-icons/fi';
@@ -7,6 +8,7 @@ import {
   ModalOverlay,
   Modal,
   OpenModalButton,
+  SettingsList,
   SettingsItem,
   BottomNavigation,
 } from './ModalSettings.styles';
@@ -14,7 +16,12 @@ import {
 const ModalSettings: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { pauseAfterCycle, togglePauseAfterCycle } = useSettings();
+  const {
+    pauseAfterCycle,
+    togglePauseAfterCycle,
+    longBreakInterval,
+    setLongBreakInterval,
+  } = useSettings();
 
   const handleModalToggle = useCallback(() => {
     setIsOpen(!isOpen);
@@ -52,15 +59,25 @@ const ModalSettings: React.FC = () => {
                 <FiX size={20} />
               </Button>
             </header>
-            <SettingsItem>
-              <span>Pause after cycle ends</span>
-              <input
-                type="checkbox"
-                onChange={togglePauseAfterCycle}
-                defaultChecked={pauseAfterCycle}
-                data-testid="togglePauseAfterCycle"
-              />
-            </SettingsItem>
+            <SettingsList>
+              <SettingsItem>
+                <span>Pause after cycle ends</span>
+                <input
+                  type="checkbox"
+                  onChange={togglePauseAfterCycle}
+                  defaultChecked={pauseAfterCycle}
+                  data-testid="togglePauseAfterCycle"
+                />
+              </SettingsItem>
+              <SettingsItem>
+                <span>Long break interval</span>
+                <InputNumber
+                  min={1}
+                  onChange={setLongBreakInterval}
+                  defaultValue={longBreakInterval}
+                />
+              </SettingsItem>
+            </SettingsList>
             <BottomNavigation>
               <Button
                 title="Ok"

@@ -26,12 +26,18 @@ export const Modal = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     font-weight: 600;
   }
 `;
 
-export const SettingsItem = styled.div`
+export const SettingsList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const SettingsItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
